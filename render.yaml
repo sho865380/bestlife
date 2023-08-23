@@ -1,0 +1,18 @@
+databases:
+  - name: bestlife
+    databaseName: bestlife
+    user: bestlife
+
+services:
+  - type: web
+    name: bestlife
+    runtime: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: bestlife
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
