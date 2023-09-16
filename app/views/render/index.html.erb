@@ -1,7 +1,239 @@
-<main class="container">
-  <div class="row text-center justify-content-center">
-    <div class="col">
-      <h1 class="display-4">Hello World!</h1>
+<html lang="ja">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>日付付きヘッダー</title>
+<style>
+        .circle-format {
+            border-radius: 50%;  /* これにより、要素が円形になります */
+            background-color: #f5f5f5;  /* 背景色を設定。お好みで変更してください */
+            padding: 20px;  /* 円の大きさを調整 */
+            width: 80px;    /* この値も調整して、円のサイズを変更できます */
+            height: 80px;   /* この値も調整して、円のサイズを変更できます */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header class="container-fluid py-3" style="background-color: #ffc107 !important;">
+    <div class="d-flex justify-content-between align-items-center">
+        <div></div> <!-- 左側のスペースを確保するための空のdiv -->
+        <h1 id="currentDate" class="mb-0"></h1>
+        <div>ログイン名</div>
+    </div>
+</header>
+
+<section class="container-fluid py-3">
+    <div class="balloon-container">
+    <div class="row mt-2" style="height: 200px;">
+    <div class="col-4">
+        <!-- 画像を追加 -->
+        <%= image_tag "woman1.jpg", alt: "Person speaking", class: "balloon-img", width: "120" %>
+        <div class="balloon clearfix">
+            <p>shoさん、その調子です!!</p>
+        </div>
+        </div>
+        <div class="col-4 d-flex align-items-center justify-content-center">
+         <form action="sample.cgi" method="post">
+            <p>期間の選択<br>
+                <select name="duration" onchange="document.getElementById('durationForm').submit();" class="btn btn-warning btn-rounded">
+                    <option value="1_week">1週間</option>
+                    <option value="2_weeks">2週間</option>
+                    <option value="3_weeks">3週間</option>
+                    <option value="1_month">1ヶ月</option>
+                    <option value="2_months">2ヶ月</option>
+                    <option value="3_months">3ヶ月</option>
+                    <option value="4_months">4ヶ月</option>
+                </select>
+            </p>
+        </form>
+        </div>
+        <div class="col-4 d-flex align-items-center justify-content-end">
+        <div class="icons align-items-center">
+       <svg xmlns="http://www.w3.org/2000/svg" width="100" height="60" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+       <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+       <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
+       </svg>
+       <svg xmlns="http://www.w3.org/2000/svg" width="100" height="60" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+        </svg>
+        </div>
+        </div>
+     </div>
+     </div>
+</section>
+
+<main class="container-fluid">
+  <div class="row mt-2" style="height: 500px;">
+    <div class="col-lg-4 col-md-12 border border-dark mx-1 p-1" style="background-color: #e6ffe6;">
+      <div class="text-center mt-3" style="font-weight: bold; font-size: 24px;">体脂肪率</div>
+      <div class="row">
+        <div class="col-6 text-center text-primary" style="font-weight: bold;">現状</div>
+        <div class="col-6 text-center text-danger" style="font-weight: bold;">目標</div>
+      </div>
+      <div class="row">
+        <div class="col-6 d-flex justify-content-center">
+            <div class="circle-format">14.2%</div>
+        </div>
+        <div class="col-6 d-flex justify-content-center">
+            <div class="circle-format">10.0%</div>
+        </div>
+      </div>
+      <div class="row text-center justify-content-center mt-3">
+      <div class="col">目標まであと-4.2%</div>
+      </div>
+      <canvas id="fatRateChart" width="400" height="200"></canvas>
+   </div>
+
+    <div class="col-lg-4 col-md-12 border border-dark mx-1 p-1" style="background-color: #ffffe6;">
+      <div class="text-center mt-3" style="font-weight: bold; font-size: 24px;">体重</div>
+      <div class="row">
+        <div class="col-6 text-center text-primary" style="font-weight: bold;">現状</div>
+        <div class="col-6 text-center text-danger" style="font-weight: bold;">目標</div>
+      </div>
+      <div class="row">
+        <div class="col-6 d-flex justify-content-center">
+            <div class="circle-format">71.2kg</div>
+        </div>
+        <div class="col-6 d-flex justify-content-center">
+            <div class="circle-format">77.0kg</div>
+        </div>
+      </div>
+        <div class="row text-center justify-content-center mt-3">
+        <div class="col">目標まで+5.8kg</div>
+        </div>
+      <canvas id="weightChart"></canvas>
+      </div>
+
+    <div class="col-lg-4 col-md-12 border border-dark mx-1 p-1">
+      <div class="text-center mt-3" style="font-weight: bold; font-size: 24px;">筋肉量</div>
+      <div class="row">
+        <div class="col-6 text-center text-primary" style="font-weight: bold;">現状</div>
+        <div class="col-6 text-center text-danger" style="font-weight: bold;">目標</div>
+      </div>
+      <div class="row">
+        <div class="col-6 d-flex justify-content-center">
+            <div class="circle-format">71.2kg</div>
+        </div>
+        <div class="col-6 d-flex justify-content-center">
+            <div class="circle-format">77.0kg</div>
+        </div>
+      </div>
+      <div class="row text-center justify-content-center mt-3">
+        <div class="col">目標まで+2.7kg</div>
+      </div>
+      <canvas id="muscleMassChart"></canvas>
     </div>
   </div>
 </main>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // 今日の日付を取得
+    let today = new Date();
+    let formattedDate = `${today.getFullYear()}年${today.getMonth() + 1}月${today.getDate()}日`;
+
+    // 日付をヘッダーにセット
+    document.getElementById("currentDate").textContent = formattedDate;
+
+    // Chart.jsでのグラフ作成コード
+let ctx = document.getElementById('fatRateChart').getContext('2d');
+let fatRateChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['1月', '2月', '3月', '4月', '5月'],  // 月を例としています。必要に応じて変更してください。
+        datasets: [{
+            label: '現状',
+            data: [14.2, 13.5, 12.8, 12.5, 12.2],  // 実際のデータに置き換えてください。
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 2,
+            fill: false
+        },
+        {
+            label: '目標',
+            data: [14.0, 13.0, 12.0, 11.0, 10.0],  // 実際のデータに置き換えてください。
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 2,
+            fill: false
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+ });
+ let weightCtx = document.getElementById('weightChart').getContext('2d');
+let weightChart = new Chart(weightCtx, {
+    type: 'line',
+    data: {
+        // 例として、時間や日付などのラベルを設定します。このラベルは変更することができます。
+        labels: ['1月', '2月', '3月', '4月', '5月'],  
+        datasets: [{
+            label: '現状',
+            data: [71.2, 71.5, 71.8, 72.0, 72.2],  // こちらのデータも実際の数値に合わせて変更してください。
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 2,
+            fill: false
+        },
+        {
+            label: '目標',
+            data: [77.0, 76.8, 76.5, 76.3, 76.0],  // こちらのデータも実際の数値に合わせて変更してください。
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 2,
+            fill: false
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+ });
+ let muscleMassCtx = document.getElementById('muscleMassChart').getContext('2d');
+let muscleMassChart = new Chart(muscleMassCtx, {
+    type: 'line',
+    data: {
+        // 例として、時間や日付などのラベルを設定します。このラベルは変更することができます。
+        labels: ['1月', '2月', '3月', '4月', '5月'],  
+        datasets: [{
+            label: '現状',
+            data: [71.2, 71.5, 71.8, 72.0, 72.2],  // こちらのデータも実際の数値に合わせて変更してください。
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 2,
+            fill: false
+        },
+        {
+            label: '目標',
+            data: [77.0, 76.8, 76.5, 76.3, 76.0],  // こちらのデータも実際の数値に合わせて変更してください。
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 2,
+            fill: false
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+ });
+
+});
+</script>
+</body>
+</html>
