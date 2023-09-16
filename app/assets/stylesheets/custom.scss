@@ -67,4 +67,21 @@ p {
     transform: translateY(-50%);
 }
 
+/* formhtmlのcss */
 
+.body {
+    font-size: 25px;
+}
+
+#currentDate {
+    margin: 20px 0;
+    font-size: 30px;
+}
+#closeButton {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 2.5rem;
+    font-weight: bold;
+}

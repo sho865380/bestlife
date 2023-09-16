@@ -4,4 +4,13 @@ class RenderController < ApplicationController
 
   def show
   end
+
+  def form
+  end
+
+  def calendar
+  end
+  
+  def login
+  end
 end
