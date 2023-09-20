@@ -1,0 +1,67 @@
+.users-form{
+    .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    
+    form {
+        position: relative; /* 追加 */
+        width: 80%;
+        max-width: 600px;
+        border: 1px solid black;
+        background-color: #FFE4B5;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .input-group {
+        margin-bottom: 20px;
+        font-size: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* この行を追加 */
+    }
+    
+    .input-group label {
+        width: 100%;
+        margin-bottom: 10px;
+        text-align: center; /* この行を追加 */
+    }
+    
+    input[type="submit"] {
+        font-size: 25px;
+    }
+    
+    input[type="submit"] {
+        background-color: #007BFF; /* 青色を背景色として設定 */
+        color: white; /* テキストの色を白にするためのオプション。青色の背景に適しています。 */
+        border: none; /* ボタンの境界線を削除 */
+         font-size: 25px;
+        padding: 10px 20px; /* ボタンの内部の間隔を設定。調整が必要な場合は変更してください。 */
+        cursor: pointer; /* ボタンのカーソルスタイルをポインタに変更 */
+    }
+    
+    /* ボタンがホバーされたときのスタイルを追加するためのオプション */
+    input[type="submit"]:hover {
+        background-color: #0056b3; /* ホバー時の色。少し暗めの青色にしています。 */
+    }    
+}
+.body {
+    font-size: 25px;
+}
+
+#currentDate {
+    margin: 20px 0;
+    font-size: 30px;
+}
+
+#closeButton {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
