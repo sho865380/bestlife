@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
-      end
+    end
+
+    def create
+    end  
 
     def form
-      end
+    end
+
     def calendar
     end
-    
 end

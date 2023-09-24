@@ -62,14 +62,14 @@
       </div>
       <div class="row">
         <div class="col-6 d-flex justify-content-center">
-            <div class="circle-format">14.2%</div>
+            <div class="circle-format"><%= @user.physicals[0].body_percentage %>%</div>
         </div>
         <div class="col-6 d-flex justify-content-center">
-            <div class="circle-format">10.0%</div>
+            <div class="circle-format"><%= @user.targets[0].target_body_percentage %>%</div>
         </div>
       </div>
       <div class="row text-center justify-content-center mt-3">
-      <div class="col">目標まであと-4.2%</div>
+      <div class="col">目標まであと<%= @user.physicals[0].body_percentage-@user.targets[0].target_body_percentage %>%</div>
       </div>
       <canvas id="fatRateChart" width="400" height="200"></canvas>
    </div>
@@ -82,14 +82,14 @@
       </div>
       <div class="row">
         <div class="col-6 d-flex justify-content-center">
-            <div class="circle-format">71.2kg</div>
+            <div class="circle-format"><%= @user.physicals[0].weight %>kg</div>
         </div>
         <div class="col-6 d-flex justify-content-center">
-            <div class="circle-format">77.0kg</div>
+            <div class="circle-format"><%= @user.targets[0].target_weight %>kg</div>
         </div>
       </div>
         <div class="row text-center justify-content-center mt-3">
-        <div class="col">目標まで+5.8kg</div>
+        <div class="col">目標まで<%= @user.physicals[0].weight-@user.targets[0].target_weight %>kg</div>
         </div>
       <canvas id="weightChart"></canvas>
       </div>
@@ -102,14 +102,14 @@
       </div>
       <div class="row">
         <div class="col-6 d-flex justify-content-center">
-            <div class="circle-format">71.2kg</div>
+            <div class="circle-format"><%= @user.physicals[0].muscle_mass %>kg</div>
         </div>
         <div class="col-6 d-flex justify-content-center">
-            <div class="circle-format">77.0kg</div>
+            <div class="circle-format"><%= @user.targets[0].target_muscle_mass %>kg</div>
         </div>
       </div>
       <div class="row text-center justify-content-center mt-3">
-        <div class="col">目標まで+2.7kg</div>
+        <div class="col">目標まで<%= @user.physicals[0].muscle_mass-@user.targets[0].target_muscle_mass %>kg</div>
       </div>
       <canvas id="muscleMassChart"></canvas>
     </div>
