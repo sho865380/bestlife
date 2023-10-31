@@ -120,8 +120,8 @@ selectField.addEventListener('change', (e) => {
     },
     body: `duration=${selectedValue}&date=${formattedDate}`, // リクエストボディにパラメータをセット
   })
-  .then(response => {
-        console.log(response.json())
+  .then((response) => {
+    console.log(response)
       if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
       }
