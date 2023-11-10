@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 get 'users/form' => 'users#form'
 get 'users/calendar' => 'users#calendar'
 post 'users/set_duration' => 'users#set_duration'
+post 'users/set_duration2' => 'users#set_duration2'
+
 
 # このルーティングは最後に定義します
 get 'users/:id' => 'users#show'
