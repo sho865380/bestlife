@@ -47,8 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .querySelector('meta[name="csrf-token"]')
     .getAttribute("content");
 
-  let bodyPercentageChart2; // チャートのインスタンスを保持するための変数をグローバルスコープで宣言
-
   selectField.addEventListener("change", (e) => {
     const selectedValue = selectField.value;
     const url = "http://localhost:3000/users/set_duration2";
@@ -68,13 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return response.json();
       })
       .then((jsonData) => {
-        if (bodyPercentageChart2) {
-          bodyPercentageChart2.destroy(); // 既存のチャートを破棄
-        }
-        let bodyPercentageCtx2 = document
-          .getElementById("bodyPercentageChart")
-          .getContext("2d");
-        bodyPercentageChart2 = new Chart(bodyPercentageCtx2, {
+        bodyPercentageChart.options = {
           type: "line",
           data: jsonData,
           options: {
@@ -84,7 +76,8 @@ document.addEventListener("DOMContentLoaded", function () {
               },
             },
           },
-        });
+        };
+        bodyPercentageChart.update();
       })
       .catch((error) => {
         console.error("Fetch error:", error);
