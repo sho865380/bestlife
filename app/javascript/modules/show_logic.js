@@ -66,17 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return response.json();
       })
       .then((jsonData) => {
-        bodyPercentageChart.options = {
-          type: "line",
-          data: jsonData,
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true,
-              },
-            },
-          },
-        };
+        bodyPercentageChart.data = jsonData;
         bodyPercentageChart.update();
       })
       .catch((error) => {
