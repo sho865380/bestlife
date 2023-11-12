@@ -18,13 +18,13 @@
         <%= image_tag "woman1.jpg", alt: "Person speaking", class: "balloon-img", width: "120" %>
         <div class="balloon clearfix">
         <p><%= "#{@user.name}さん、その調子です!!" %></p>
-
         </div>
         </div>
         <div class="col-4 d-flex align-items-center justify-content-center">
-         <form action="sample.cgi" method="post">
+          <form method="post">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
             <p>期間の選択<br>
-                <select name="duration" onchange="document.getElementById('durationForm').submit();" class="btn btn-warning btn-rounded">
+                <select name="duration" id="durationSelect" class="btn btn-warning btn-rounded">
                     <option value="1_week">1週間</option>
                     <option value="2_weeks">2週間</option>
                     <option value="3_weeks">3週間</option>
@@ -65,13 +65,13 @@
             <div class="circle-format"><%= @user.physicals[0].body_percentage %>%</div>
         </div>
         <div class="col-6 d-flex justify-content-center">
-            <div class="circle-format"><%= @user.targets[0].target_body_percentage %>%</div>
+            <div class="circle-format"><%= @user.target.target_body_percentage %>%</div>
         </div>
       </div>
       <div class="row text-center justify-content-center mt-3">
-      <div class="col">目標まであと<%= @user.physicals[0].body_percentage-@user.targets[0].target_body_percentage %>%</div>
+      <div class="col">目標まであと<%= @user.physicals[0].body_percentage-@user.target.target_body_percentage %>%</div>
       </div>
-      <canvas id="fatRateChart" width="400" height="200"></canvas>
+      <canvas id="bodyPercentageChart" width="400" height="200"></canvas>
    </div>
 
     <div class="col-lg-4 col-md-12 border border-dark mx-1 p-1" style="background-color: #ffffe6;">
@@ -85,11 +85,11 @@
             <div class="circle-format"><%= @user.physicals[0].weight %>kg</div>
         </div>
         <div class="col-6 d-flex justify-content-center">
-            <div class="circle-format"><%= @user.targets[0].target_weight %>kg</div>
+            <div class="circle-format"><%= @user.target.target_weight %>kg</div>
         </div>
       </div>
         <div class="row text-center justify-content-center mt-3">
-        <div class="col">目標まで<%= @user.physicals[0].weight-@user.targets[0].target_weight %>kg</div>
+        <div class="col">目標まで<%= @user.physicals[0].weight-@user.target.target_weight %>kg</div>
         </div>
       <canvas id="weightChart"></canvas>
       </div>
@@ -105,11 +105,11 @@
             <div class="circle-format"><%= @user.physicals[0].muscle_mass %>kg</div>
         </div>
         <div class="col-6 d-flex justify-content-center">
-            <div class="circle-format"><%= @user.targets[0].target_muscle_mass %>kg</div>
+            <div class="circle-format"><%= @user.target.target_muscle_mass %>kg</div>
         </div>
       </div>
       <div class="row text-center justify-content-center mt-3">
-        <div class="col">目標まで<%= @user.physicals[0].muscle_mass-@user.targets[0].target_muscle_mass %>kg</div>
+        <div class="col">目標まで<%= @user.physicals[0].muscle_mass-@user.target.target_muscle_mass %>kg</div>
       </div>
       <canvas id="muscleMassChart"></canvas>
     </div>

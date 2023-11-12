@@ -86,7 +86,7 @@
       <div class="row text-center justify-content-center mt-3">
       <div class="col">目標まであと-4.2%</div>
       </div>
-      <canvas id="fatRateChart" width="400" height="200"></canvas>
+      <canvas id="bodyPercentageChart" width="400" height="200"></canvas>
    </div>
 
     <div class="col-lg-4 col-md-12 border border-dark mx-1 p-1" style="background-color: #ffffe6;">
@@ -140,8 +140,8 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("currentDate").textContent = formattedDate;
 
     // Chart.jsでのグラフ作成コード
-let ctx = document.getElementById('fatRateChart').getContext('2d');
-let fatRateChart = new Chart(ctx, {
+let ctx = document.getElementById('bodyPercentageChart').getContext('2d');
+let bodyPercentageChart = new Chart(ctx, {
     type: 'line',
     data: {
         labels: ['1月', '2月', '3月', '4月', '5月'],  // 月を例としています。必要に応じて変更してください。
@@ -201,7 +201,7 @@ let weightChart = new Chart(weightCtx, {
         }
     }
  });
- let muscleMassCtx = document.getElementById('muscleMassChart').getContext('2d');
+ <%# let muscleMassCtx = document.getElementById('muscleMassChart').getContext('2d');
 let muscleMassChart = new Chart(muscleMassCtx, {
     type: 'line',
     data: {
@@ -236,4 +236,4 @@ let muscleMassChart = new Chart(muscleMassCtx, {
 });
 </script>
 </body>
-</html>
+</html> %>
