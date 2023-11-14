@@ -35,8 +35,10 @@ class UsersController < ApplicationController
         # 2. 取得したデータを整形する
         # labels: ["5月", "4月", "3月", "2月", "1月"] のような形で直近の月をラベルとして取得します。
         # labels = dates_array.reverse.map { |result| "#{result.month.to_i}月" }
-        labels = dates_array.reverse.map { |d| "#{d.month.to_i}月" }
-    
+        
+        #generate_dates_arrayを使って場合分け
+        labels = dates_array.reverse.map { |d| "#{d.month.to_i}月#{d.day.to_i}日" }
+        
         
         
         # 3. JSONデータを生成してレンダリングする
@@ -81,7 +83,7 @@ class UsersController < ApplicationController
       # 2. 取得したデータを整形する
       # labels: ["5月", "4月", "3月", "2月", "1月"] のような形で直近の月をラベルとして取得します。
       # labels = dates_array.reverse.map { |result| "#{result.month.to_i}月" }
-      labels = dates_array.reverse.map { |d| "#{d.month.to_i}月" }
+      labels = dates_array.reverse.map { |d| "#{d.month.to_i}月#{d.day.to_i}日" }
   
       
       
