@@ -49,3 +49,4 @@ ActiveRecord::Schema.define(version: 2023_09_30_092240) do
   add_foreign_key "physicals", "users"
   add_foreign_key "targets", "users"
 end
+
