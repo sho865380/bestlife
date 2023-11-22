@@ -3,6 +3,7 @@ get 'users/form' => 'users#form'
 get 'users/calendar' => 'users#calendar'
 post 'users/set_duration' => 'users#set_duration'
 post 'users/set_duration2' => 'users#set_duration2'
+post 'users/set_duration3' => 'users#set_duration3'
 
 
 # このルーティングは最後に定義します
