@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .getAttribute("content");
     let muscleMassChart2;
     let bodyPercentageChart;
+    let weightChart;
     
     const selectedValue = selectField.value;
     let url = "http://localhost:3000/users/set_duration";
@@ -152,6 +153,77 @@ document.addEventListener("DOMContentLoaded", function () {
   .catch((error) => {
     console.error("Fetch error:", error);
   });
+});
+
+
+
+url = "http://localhost:3000/users/set_duration3";
+
+fetch(url, {
+method: "POST",
+headers: {
+"Content-Type": "application/x-www-form-urlencoded",
+"X-CSRF-Token": csrfToken, // CSRFトークンをヘッダーに追加
+},
+body: `duration=${selectedValue}&date=${formattedDate}`, // リクエストボディにパラメータをセット
+})
+.then((response) => {
+if (!response.ok) {
+  throw new Error(`HTTP error! Status: ${response.status}`);
+}
+return response.json();
+})
+.then((jsonData) => {
+let weightCtx2 = document
+.getElementById("weightChart")
+.getContext("2d");
+weightChart = new Chart(weightCtx2, {
+type: "line",
+data: jsonData,
+
+options: {
+  scales: {
+    y: {
+      beginAtZero: true,
+    },
+  },
+},
+});
+})
+.catch((error) => {
+console.error("Fetch error:", error);
+});
+
+
+
+
+
+selectField.addEventListener("change", (e) => {
+  const selectedValue = selectField.value;
+  const url = "http://localhost:3000/users/set_duration3";
+
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "X-CSRF-Token": csrfToken,
+    },
+    body: `duration=${selectedValue}&date=${formattedDate}`,
+  })
+    .then((response) => {
+      if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+  return response.json();
+})
+.then((jsonData) => {
+debugger;
+weightChart.data = jsonData;
+weightChart.update();
+})
+.catch((error) => {
+console.error("Fetch error:", error);
+});
 });
 
 });
