@@ -43,7 +43,7 @@ user1 = User.find_by(email: 'sho216.91@icloud.com')
 if user1
   # 日付範囲の定義
   start_date = Date.new(2023, 8, 20)
-  end_date = Date.new(2023, 11, 25)
+  end_date = Date.new(2023, 12, 10)
 
   # 各日付に対してサンプルデータを生成
   (start_date..end_date).each do |date|
