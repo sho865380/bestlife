@@ -231,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const today = new Date();
   const formattedDate = `${today.getFullYear()}年${today.getMonth() + 1}月${today.getDate()}日`;
   document.getElementById("currentDate").textContent = formattedDate;
-
+   
   // 下記コードはアイコンをクリックした際の遷移ページ
   const calendarIcon = document.getElementById('calendarIcon');
   if (calendarIcon) {
@@ -285,9 +285,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   selectField.addEventListener("change", () => {
-      fetchDataAndRenderChart("muscleMassChart", "http://localhost:3000/users/set_duration", "muscleMassChart");
-      fetchDataAndRenderChart("bodyPercentageChart", "http://localhost:3000/users/set_duration2", "bodyPercentageChart");
-      fetchDataAndRenderChart("weightChart", "http://localhost:3000/users/set_duration3", "weightChart");
+      fetchDataAndRenderChart("muscleMassChart", "/users/set_duration", "muscleMassChart");
+      fetchDataAndRenderChart("bodyPercentageChart", "/users/set_duration2", "bodyPercentageChart");
+      fetchDataAndRenderChart("weightChart", "/users/set_duration3", "weightChart");
   });
 
   // 初期チャートのロード
