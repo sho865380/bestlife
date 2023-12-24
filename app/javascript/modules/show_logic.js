@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const calendarIcon = document.getElementById('calendarIcon');
   if (calendarIcon) {
     calendarIcon.addEventListener('click', function() {
-      window.location.href = 'http://localhost:3000/users/calendar';
+      window.location.href = '/users/calendar';
     });
   }
 
