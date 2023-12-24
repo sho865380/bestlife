@@ -1,25 +1,25 @@
 <div class="users-form">
-    <div class="centered-container">
-        <form action="your-server-endpoint" method="post">
-            <span id="closeButton">×</span>
-            <h1 id="currentDate"></h1>
-            <div class="input-group">
-                <label for="bodyFatPercentage">体脂肪率(%):</label>
-                <input type="number" id="bodyFatPercentage" name="bodyFatPercentage" step="0.1" placeholder="体脂肪率を入力">
-            </div>
-            <div class="input-group">
-                <label for="weight">体重(kg):</label>
-                <input type="number" id="weight" name="weight" step="0.1" placeholder="体重を入力">
-            </div>
-            <div class="input-group">
-                <label for="muscleMass">筋肉量(kg):</label>
-                <input type="number" id="muscleMass" name="muscleMass" step="0.1" placeholder="筋肉量を入力">
-            </div>
-            <div>
-                <input type="submit" value="記録する">
-            </div>
-        </form>
-    </div>
+  <div class="centered-container">
+    <%= form_tag physicals_path, method: :post do %>
+      <span id="closeButton">×</span>
+      <h1 id="currentDate"></h1>
+      <div class="input-group">
+        <%= label_tag 'physical_body_percentage', "体脂肪率(%):" %>
+        <%= number_field_tag 'physical[body_percentage]', nil, step: 0.1, placeholder: "体脂肪率を入力", id: 'physical_body_percentage' %>
+      </div>
+      <div class="input-group">
+        <%= label_tag 'physical_weight', "体重(kg):" %>
+        <%= number_field_tag 'physical[weight]', nil, step: 0.1, placeholder: "体重を入力", id: 'physical_weight' %>
+      </div>
+      <div class="input-group">
+        <%= label_tag 'physical_muscle_mass', "筋肉量(kg):" %>
+        <%= number_field_tag 'physical[muscle_mass]', nil, step: 0.1, placeholder: "筋肉量を入力", id: 'physical_muscle_mass' %>
+      </div>
+      <div>
+        <%= submit_tag "記録する" %>
+      </div>
+    <% end %>
+  </div>
 </div>
 <%= javascript_pack_tag 'users_form_page' %>
 
