@@ -7,12 +7,19 @@ function generate_year_range(start, end) {
 }
 
 const today = new Date();
+
 let currentMonth = today.getMonth();
+
 let currentYear = today.getFullYear();
+
 const selectYear = document.getElementById("year");
 const selectMonth = document.getElementById("month");
 const createYear = generate_year_range(1970, 2200);
 
+document.getElementById("previous").addEventListener("click",previous);
+document.getElementById("next").addEventListener("click",next);
+document.getElementById("month").addEventListener("change",jump);
+document.getElementById("year").addEventListener("change",jump);
 document.getElementById("year").innerHTML = createYear;
 
 const calendar = document.getElementById("calendar");
@@ -39,11 +46,13 @@ function next() {
 }
 
 function previous() {
+    
     currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
+    
     currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
+    
     showCalendar(currentMonth, currentYear);
 }
-
 function jump() {
     currentYear = parseInt(selectYear.value);
     currentMonth = parseInt(selectMonth.value);
